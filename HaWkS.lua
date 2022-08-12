@@ -19304,7 +19304,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_pers
 {{text = '↫ اوامر النسب⌯',type = 'text'},},
 {{text = '↫  الحمايه⌯',type = 'text'},{text = '↫  مطور السورس⌯',type = 'text'},},
 {{text = '↫  السورس⌯',type = 'text'},},}}
-return LuaTele.sendText(msg_chat_id,msg_id,'*⌯︙اهلا بك عزيزي \n⌯︙في كيبورد اوامر الأعضاء*', 'md', false, false, false, false, reply_markup)
+return merolua.sendText(msg_chat_id,msg_id,'✧︙اهلا بك عزيزي المطور\n✧︙اليك اوامر الكيبورد الخاصه بك\n✧︙تابع قناة السورس لتصلك اخر المنشورات @abogram\n✧︙تابع قناة التحديثات لتصلك اخر المنشورات @HaWkSupdate', 'md', false, false, false, false, reply_markup)
 end
 if text == "↫ اوامر التسليه⌯" then
 local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_personal = true,data = {
@@ -19314,7 +19314,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_pers
 {{text = '↫ مسلسل⌯',type = 'text'},},
 {{text = '↫ شعر⌯',type = 'text'},{text = '↫ انمي⌯',type = 'text'},},
 {{text = '↫  رجوع ⌯',type = 'text'},},}}
-return LuaTele.sendText(msg_chat_id,msg_id,'*⌯︙اهلا بك عزيزي \n⌯︙في كيبورد اوامر الأعضاء*', 'md', false, false, false, false, reply_markup)
+return merolua.sendText(msg_chat_id,msg_id,'✧︙اهلا بك عزيزي المطور\n✧︙اليك اوامر الكيبورد الخاصه بك\n✧︙تابع قناة السورس لتصلك اخر المنشورات @abogram\n✧︙تابع قناة التحديثات لتصلك اخر المنشورات @HaWkSupdate', 'md', false, false, false, false, reply_markup)
 end
 if text == "↫ الاوامر الخدميه ⌯" then
 local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_personal = true,data = {
@@ -19323,7 +19323,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_pers
 {{text = '↫  نبذتي⌯',type = 'text'},{text = '↫  اسمي⌯',type = 'text'},},
 {{text = '↫  معرفي⌯',type = 'text'},{text = '↫ ايديي⌯',type = 'text'},},
 {{text = '↫  رجوع ⌯',type = 'text'},},}}
-return LuaTele.sendText(msg_chat_id,msg_id,'*⌯︙اهلا بك عزيزي \n⌯︙في كيبورد اوامر الأعضاء*', 'md', false, false, false, false, reply_markup)
+return merolua.sendText(msg_chat_id,msg_id,'✧︙اهلا بك عزيزي المطور\n✧︙اليك اوامر الكيبورد الخاصه بك\n✧︙تابع قناة السورس لتصلك اخر المنشورات @abogram\n✧︙تابع قناة التحديثات لتصلك اخر المنشورات @HaWkSupdate', 'md', false, false, false, false, reply_markup)
 end
 if text == "↫ اوامر النسب⌯" then
 local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_personal = true,data = {
@@ -19331,7 +19331,7 @@ local reply_markup = LuaTele.replyMarkup{type = 'keyboard',resize = true,is_pers
 {{text = 'نسبه الغباء',type = 'text'},{text = 'نسبه الذكاء', type = 'text'},},
 {{text = 'نسبه الرجوله',type = 'text'},{text = 'نسبه الانوثه',type = 'text'},},
 {{text = '↫  رجوع ⌯',type = 'text'},},}}
-return LuaTele.sendText(msg_chat_id,msg_id,'*⌯︙اهلا بك عزيزي \n⌯︙في كيبورد اوامر الأعصاء*', 'md', false, false, false, false, reply_markup)
+return merolua.sendText(msg_chat_id,msg_id,'✧︙اهلا بك عزيزي المطور\n✧︙اليك اوامر الكيبورد الخاصه بك\n✧︙تابع قناة السورس لتصلك اخر المنشورات @abogram\n✧︙تابع قناة التحديثات لتصلك اخر المنشورات @HaWkSupdate', 'md', false, false, false, false, reply_markup)
 end
 --
 
