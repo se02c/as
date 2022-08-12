@@ -19191,6 +19191,7 @@ data = {
 {text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 }
+}
 return merolua.sendText(msg_chat_id,msg_id,CmdStart,"md",false, false, false, false, reply_markup)
 end
 else
@@ -19206,6 +19207,7 @@ data = {
 {
 {text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
+}
 }
 return merolua.sendText(msg_chat_id,msg_id,Redis:get(hawks.."HaWkS:Start:Bot"),"md",false, false, false, false, reply_markup)
 end
@@ -22067,6 +22069,7 @@ keyboard.inline_keyboard = {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
 }
+}
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
 end
@@ -22090,6 +22093,7 @@ keyboard.inline_keyboard = {
 {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
+}
 }
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
@@ -22115,6 +22119,7 @@ keyboard.inline_keyboard = {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
 }
+}
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
 end
@@ -22139,6 +22144,7 @@ keyboard.inline_keyboard = {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
 }
+}
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
 end
@@ -22156,6 +22162,7 @@ keyboard.inline_keyboard = {
 {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
+}
 }
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
