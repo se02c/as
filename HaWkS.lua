@@ -9964,6 +9964,30 @@ local F333F = ' \n✧︙تم تعطيل الافلام'
 merolua.sendText(msg_chat_id,msg_id,F333F,"md")
 Redis:set(hawks..'Abs:Movies:Abs'..msg.chat_id,true)  
 end
+if text == "استوري" then
+local t = "*اضغط علي الزر لاختيار استوري أخر 🌝🖤*"
+Rrr = math.random(4,50)
+local m = "https://t.me/Qapplu/"..Rrr..""
+keyboard = {}
+keyboard.inline_keyboard = {
+{
+{text = ' ◍ استوري ❤️‍🔥', callback_data=msg.sender.user_id.."/story"},
+},
+{
+{text = ' ◍ استوري مضحك  😂', callback_data=msg.sender.user_id.."/story4"},
+},
+{
+{text = ' ◍ استوري قران 🌞', callback_data=msg.sender.user_id.."/story3"},
+},
+{
+{text = ' ◍ استوري حب 💌', callback_data=msg.sender.user_id.."/story2"},
+},
+{
+},
+}
+local rep = msg.id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token.."/sendaudio?chat_id="..msg_chat_id.."&caption="..URL.escape(t).."&audio="..m.."&reply_to_message_id="..rep.."&parse_mode=Markdown&reply_markup="..JSON.encode(keyboard))
+end
 if text and (text == "فلم" or text == "↫ فلم ✧") and not Redis:get(hawks..'Abs:Movies:Abs'..msg.chat_id) then
 Abs = math.random(4,80); 
 local Text ='*✧︙تم اختيار الفلم لك*'
@@ -22033,6 +22057,51 @@ y = y + 1
 end
 end
 end
+if Text and Text:match('(%d+)/story') then
+local UserId = Text:match('(%d+)/story')
+if tonumber(IdUser) == tonumber(UserId) then
+Rrr = math.random(2,22)
+au ={type = "audio",media = "https://t.me/JABWA8/"..Rrr.."",caption = '*مرحبا اليك استوري 🌝🖤*\n',parse_mode = "Markdown"}
+keyboard = {}
+keyboard.inline_keyboard = {{{text = '◍ استوري أخري ❤️‍🔥', callback_data=IdUser.."/story"},},}
+local mm = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..mm.."&media="..JSON.encode(au).."&reply_markup="..JSON.encode(keyboard))
+end
+end
+if Text and Text:match('(%d+)/story2') then
+local UserId = Text:match('(%d+)/story2')
+if tonumber(IdUser) == tonumber(UserId) then
+Rrr = math.random(4,74)
+au ={type = "audio",media = "https://t.me/JABWA7/"..Rrr.."",caption = '*مرحبا اليك استوري حب 🌝🖤*\n',parse_mode = "Markdown"}
+keyboard = {}
+keyboard.inline_keyboard = {{{text = '◍ استوري أخري ❤️‍🔥', callback_data=IdUser.."/story2"},},}
+local mm = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..mm.."&media="..JSON.encode(au).."&reply_markup="..JSON.encode(keyboard))
+end
+end
+if Text and Text:match('(%d+)/story3') then
+local UserId = Text:match('(%d+)/story3')
+if tonumber(IdUser) == tonumber(UserId) then
+Rrr = math.random(4,74)
+au ={type = "audio",media = "https://t.me/JABWA7/"..Rrr.."",caption = '*مرحبا اليك استوري قرأن 🌝🖤*\n',parse_mode = "Markdown"}
+keyboard = {}
+keyboard.inline_keyboard = {{{text = '◍ استوري أخري ❤️‍🔥', callback_data=IdUser.."/story3"},},}
+local mm = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..mm.."&media="..JSON.encode(au).."&reply_markup="..JSON.encode(keyboard))
+end
+end
+if Text and Text:match('(%d+)/story4') then
+local UserId = Text:match('(%d+)/story4')
+if tonumber(IdUser) == tonumber(UserId) then
+Rrr = math.random(4,74)
+au ={type = "audio",media = "https://t.me/JABWA6/"..Rrr.."",caption = '*مرحبا اليك استوري مضحك 🌝🖤*\n',parse_mode = "Markdown"}
+keyboard = {}
+keyboard.inline_keyboard = {{{text = '◍ استوري أخري ❤️‍🔥', callback_data=IdUser.."/story4"},},}
+local mm = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..mm.."&media="..JSON.encode(au).."&reply_markup="..JSON.encode(keyboard))
+end
+end
+
 if not data.ControllerBot then
 local UserInfo = merolua.getUser(IdUser)
 for Name_User in string.gmatch(UserInfo.first_name, "[^%s]+" ) do
