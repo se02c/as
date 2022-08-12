@@ -19168,6 +19168,7 @@ keyboardd.inline_keyboard = {
 {text = '- قناة السورس .', url = 't.me/VVQYY'}, 
 },
 }
+}
 local msg_id = msg.id/2097152/0.5 
 return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(CmdStart)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
 else
@@ -19191,7 +19192,6 @@ data = {
 {text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 }
-}
 return merolua.sendText(msg_chat_id,msg_id,CmdStart,"md",false, false, false, false, reply_markup)
 end
 else
@@ -19207,7 +19207,6 @@ data = {
 {
 {text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
-}
 }
 return merolua.sendText(msg_chat_id,msg_id,Redis:get(hawks.."HaWkS:Start:Bot"),"md",false, false, false, false, reply_markup)
 end
@@ -22048,8 +22047,7 @@ keyboard.inline_keyboard = {
 {
 {text = 'نـبـذه 🦋', callback_data ='/myabuot'}
 },
-{
-},
+}
 }
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
@@ -22068,7 +22066,6 @@ keyboard.inline_keyboard = {
 {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
-}
 }
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
@@ -22093,7 +22090,6 @@ keyboard.inline_keyboard = {
 {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
-}
 }
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
@@ -22144,7 +22140,6 @@ keyboard.inline_keyboard = {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
 }
-}
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
 end
@@ -22162,7 +22157,6 @@ keyboard.inline_keyboard = {
 {
 {text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
 },
-}
 }
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
