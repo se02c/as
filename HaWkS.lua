@@ -19159,15 +19159,14 @@ local CmdStart = '*\n✧︙أهلآ بك في بوت '..(Redis:get(hawks.."HaWkS
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
-{text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
+{text = 'الــســورس ♻️', callback_data ='/bnbak'}, {text = 'اوامـر الـمـوسـيـقـي 🎵', callback_data ='/a7asezr'},
 },
 {
-{text = '- لتنصيب بوت', url = 'https://t.me/VVQYY/2'}, 
+{text = 'حــول ⚡️', callback_data ='/myabuot'}
 },
 {
-{text = '- قناة السورس .', url = 't.me/VVQYY'}, 
+{text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
-}
 }
 local msg_id = msg.id/2097152/0.5 
 return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(CmdStart)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
