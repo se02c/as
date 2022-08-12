@@ -19143,56 +19143,66 @@ print('User Id : '..msg_user_send_id)
 merolua.sendText(msg_chat_id,msg_id, "✧︙ تم تحديث الملفات ♻","md",true)
 dofile('HaWkS.lua')  
 end
-if text == '/start' and ChCheck(msg) then
-photo = merolua.getUserProfilePhotos(hawks)
-Redis:sadd(hawks..'HaWkS:Num:User:Pv',msg.sender_id.user_id)  
+if text == '/start' then
+local photo = LuaTele.getUserProfilePhotos(HaWkS)
+local ban = LuaTele.getUser(HaWkS)
+local bain = LuaTele.getUser(msg.sender.user_id)
+Redis:sadd(HaWkS..'Num:User:Pv',msg.sender.user_id)  
 if not msg.ControllerBot then
-if not Redis:get(hawks.."HaWkS:Start:Bot") then
+if not Redis:get(HaWkS.."Start:Bot") then
+if bain.username then
+banusername = '[@'..bain.username..']'
+else
+banusername = 'لا يوجد'
+end
+if bain.first_name then
+baniusername = '*['..bain.first_name..'](tg://user?id='..bain.id..')*'
+else
+baniusername = 'لا يوجد'
+end
+local CmdStart = '*ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n 🎤╖ أهلآ بك عزيزي أنا بوت '..(Redis:get(HaWkS.."Name:Bot") or "زيرو")..
+'\n ⚙️╢ وظيفتي حماية المجموعات'..
+'\n ✅╢ لتفعيل البوت عليك اتباع مايلي '..
+'\n 🔘╢ أضِف البوت إلى مجموعتك'..
+'\n ⚡️╢ ارفعهُ » مشرف'..
+'\n ⬆️╢ سيتم ترقيتك مالك في البوت'..
+'\n 🎌╜ ارسل كلمة تفعيل ليتم تفعيل المجموعه'..
+'\n ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ'..
+'\n ✵ مطور البوت -›〘 @'..UserSudo..' 〙*'
 if photo.total_count > 0 then
-local CmdStart = '*\n✧︙أهلآ بك في بوت '..(Redis:get(hawks.."HaWkS:Name:Bot") or "هاكس")..
-'\n✧︙اختصاص البوت حماية المجموعات'..
-'\n✧︙لتفعيل البوت عليك اتباع مايلي ...'..
-'\n✧︙اضف البوت الى مجموعتك'..
-'\n✧︙ارفعه ادمن {مشرف}'..
-'\n✧︙ارسل كلمة { تفعيل } ليتم تفعيل المجموعه'..
-'\n✧︙مطور البوت ← {@'..UserSudo..'}*'
-keyboardd = {} 
-keyboardd.inline_keyboard = {
+keyboard = {} 
+keyboard.inline_keyboard = {
 {
-{text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
+{text = 'الــســورس ♻️', callback_data ='/bnbak'}, {text = 'اوامـر الـمـوسـيـقـي 🎵', callback_data ='/a7asezr'},
 },
 {
-{text = '- لتنصيب بوت', url = 'https://t.me/VVQYY/2'}, 
+{text = 'حــول ⚡️', callback_data ='/myabuot'}
 },
 {
-{text = '- قناة السورس .', url = 't.me/VVQYY'}, 
+{text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 }
-local msg_id = msg.id/2097152/0.5 
-return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(CmdStart)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
+local msgg = msg_id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(CmdStart).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+LuaTele.sendText(Sudo_Id,0,'*\n دخل شخص إلى البوت \n-- TeAm REbOrTeR --\n اسمه :- '..baniusername..' \n ايديه :-  : '..msg.sender.user_id..'\n - معرفة '..banusername..' \n*',"md")
 else
-local CmdStart = '*\n✧︙أهلآ بك في بوت '..(Redis:get(hawks.."HaWkS:Name:Bot") or "هاكس")..
-'\n✧︙اختصاص البوت حماية المجموعات'..
-'\n✧︙لتفعيل البوت عليك اتباع مايلي ...'..
-'\n✧︙اضف البوت الى مجموعتك'..
-'\n✧︙ارفعه ادمن {مشرف}'..
-'\n✧︙ارسل كلمة { تفعيل } ليتم تفعيل المجموعه'..
-'\n✧︙مطور البوت ← {@'..UserSudo..'}*'
-local reply_markup = merolua.replyMarkup{
+local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
-{
-{text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
+{text = 'الـمـطـوريــن 🧑‍💻', callback_data ='/lovesou'}, {text = 'الــقــنــوات 🌐', callback_data ='/chSource'},
 },
 {
-{text = '- لتنصيب بوت', url = 'https://t.me/VVQYY/2'}, 
+{text = 'الـبـوتـات 🤖', callback_data ='/mybot'}
 },
 {
-{text = '- قناة السورس .', url = 't.me/VVQYY'}, 
+{text = 'حــول ⚡️', callback_data ='/myabuot'}
+},
+{
+{text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
 }
-}
-return merolua.sendText(msg_chat_id,msg_id,CmdStart,"md",false, false, false, false, reply_markup)
+return LuaTele.sendText(msg_chat_id,msg_id,Redis:get(HaWkS.."Start:Bot"),"md",false, false, false, false, reply_markup)
+end
 end
 else
 local reply_markup = merolua.replyMarkup{
@@ -21995,6 +22005,140 @@ Redis:sadd(hawks.."HaWkS:Addictive:Group"..UserId[2],v.member_id.user_id)
 y = y + 1
 end
 end
+end
+if Text == '/bnbak' then
+local photo = LuaTele.getUserProfilePhotos(HaWkS)
+local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
+pph ={
+type = "photo",
+media = ph,
+caption = "*ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n🎤╖مرحبا بك عزيزي مجددا\n⚙️╢ وظيفتي حماية المجموعات\n✅╢ لتفعيل البوت عليك اتباع مايلي\n🔘╢ أضِف البوت إلى مجموعتك\n⚡️╢ ارفعهُ » مشرف\n⬆️╢ سيتم ترقيتك مالك في البوت\n🎌╜ ارسل كلمة تفعيل ليتم تفعيل المجموعه\n ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*",
+parse_mode = "Markdown"                                                                                                                                                               
+}     
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'الـمـطـوريــن 🧑‍💻', callback_data ='/lovesou'}, {text = 'الــقــنــوات 🌐', callback_data ='/chSource'},
+},
+{
+{text = 'الـبـوتـات 🤖', callback_data ='/mybot'}
+},
+{
+{text = 'نـبـذه 🦋', callback_data ='/myabuot'}
+},
+{
+},
+}
+local ban = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
+end
+if Text == '/a7asezr' then
+local photo = LuaTele.getUserProfilePhotos(HaWkS)
+local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
+pph ={
+type = "photo",
+media = ph,
+caption = "*🎵╖ اوامر الموسيقي ⇊\n══════════════════\n▶️╖ تشغيل «» ريلاي علي اغنيه او فديو\n🎶╢ تشغيل + اسم الاغنيه\n🔴╢ بث+ لينك بث مباشر\n⏹╢ ايقافٴ\n⚡️╢ بنج + لعرض سرعه البوت\n💌╢ قائمه + لعرض قائمه الاغاني\n👷‍♂️╢ الحساب المساعد\n✅╢ انضم + لدخول الحساب المساعد\n🚷╜ غادر + لخروج الحساب المساعد\n══════════════════ٴ\n\nالدعم : @ttccss\n*",
+parse_mode = "Markdown"                                                                                                                                                               
+}     
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
+},
+}
+local ban = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
+end
+if Text == '/chSource' then
+local photo = LuaTele.getUserProfilePhotos(HaWkS)
+local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
+pph ={
+type = "photo",
+media = ph,
+caption = "*• مرحبا بك في سورس زيرو •\n• انت الان في قائمة قنوات السورس •\n*",
+parse_mode = "Markdown"                                                                                                                                                               
+}     
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '⌯ 𝙍𝙀𝘽𝙊𝙍𝙏𝙀𝙍 - ريـبـورتـر ⌯', url ='https://t.me/RBBOU'},
+},
+{
+{text = '• 𝙎𝙊𝙐𝙍𝘾𝙀 𝙕𝙀𝙍𝙊 •⚡️', url ='https://t.me/XTIORY'},
+},
+{
+{text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
+},
+}
+local ban = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
+end
+if Text == '/lovesou' then
+local photo = LuaTele.getUserProfilePhotos(HaWkS)
+local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
+pph ={
+type = "photo",
+media = ph,
+caption = "*• مرحبا بك في سورس زيرو •\n• انت الان في قائمة مطورين السورس •\n *",
+parse_mode = "Markdown"                                                                                                                                                               
+}     
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '𝗔𝗕𝗗𝗢 𝗔𝗦𝗜𝗟 - ســـــــــيزر', url ='https://t.me/ttccss'},
+},
+{
+{text = '.َ ‹ 𝙱𝙰𝙽𝙳𝙰 || بـانـدا .', url ='https://t.me/Q_o_ll'},
+},
+{
+{text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
+},
+}
+local ban = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
+end
+if Text == '/mybot' then
+local photo = LuaTele.getUserProfilePhotos(HaWkS)
+local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
+pph ={
+type = "photo",
+media = ph,
+caption = "*• مرحبا بك في سورس زيرو •\n• انت الان في قائمة البوتات •\n*",
+parse_mode = "Markdown"                                                                                                                                                               
+}     
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '𝗔𝗡𝗜𝗧𝗔 ╏♪', url ='https://t.me/Rep0obot'},
+},
+{
+{text = '.َ ‹𝘽𝘼𝙉𝘿𝘼~𝙗𝙤𝙩🐼', url ='https://t.me/J_As_bot'},
+},
+{
+{text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
+},
+}
+local ban = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
+end
+if Text == '/myabuot' then
+local photo = LuaTele.getUserProfilePhotos(HaWkS)
+local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
+pph ={
+type = "photo",
+media = ph,
+caption = "*❤️‍🔥: اهلا بك عزيزي..\n\n🌐: هذه نبذه عن سورس زيرو\n\n⚙️: السورس خاص با حمايه المجموعات\n\n🎮: و السورس يوجد به جميع ميزات التسليه\n\n♻️: كل ما عليك لتفعيل البوت\n\n✅: ان تضيفه في الجروب  من ثم تخليه ادمن و تكتب « تفعيل »\n\n*",
+parse_mode = "Markdown"                                                                                                                                                               
+}     
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '𝙱𝙰𝙲𝙺 🔺', callback_data="/bnbak"},
+},
+}
+local ban = Msg_id/2097152/0.5
+https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
 end
 if not data.ControllerBot then
 local UserInfo = merolua.getUser(IdUser)
