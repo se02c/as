@@ -19143,71 +19143,21 @@ print('User Id : '..msg_user_send_id)
 merolua.sendText(msg_chat_id,msg_id, "✧︙ تم تحديث الملفات ♻","md",true)
 dofile('HaWkS.lua')  
 end
-if text == '/start' then
-local photo = LuaTele.getUserProfilePhotos(HaWkS)
-local ban = LuaTele.getUser(HaWkS)
-local bain = LuaTele.getUser(msg.sender.user_id)
-Redis:sadd(HaWkS..'Num:User:Pv',msg.sender.user_id)  
+if text == '/start' and ChCheck(msg) then
+photo = merolua.getUserProfilePhotos(hawks)
+Redis:sadd(hawks..'HaWkS:Num:User:Pv',msg.sender_id.user_id)  
 if not msg.ControllerBot then
-if not Redis:get(HaWkS.."Start:Bot") then
-if bain.username then
-banusername = '[@'..bain.username..']'
-else
-banusername = 'لا يوجد'
-end
-if bain.first_name then
-baniusername = '*['..bain.first_name..'](tg://user?id='..bain.id..')*'
-else
-baniusername = 'لا يوجد'
-end
-local CmdStart = '*ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n 🎤╖ أهلآ بك عزيزي أنا بوت '..(Redis:get(HaWkS.."Name:Bot") or "زيرو")..
-'\n ⚙️╢ وظيفتي حماية المجموعات'..
-'\n ✅╢ لتفعيل البوت عليك اتباع مايلي '..
-'\n 🔘╢ أضِف البوت إلى مجموعتك'..
-'\n ⚡️╢ ارفعهُ » مشرف'..
-'\n ⬆️╢ سيتم ترقيتك مالك في البوت'..
-'\n 🎌╜ ارسل كلمة تفعيل ليتم تفعيل المجموعه'..
-'\n ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ'..
-'\n ✵ مطور البوت -›〘 @'..UserSudo..' 〙*'
+if not Redis:get(hawks.."HaWkS:Start:Bot") then
 if photo.total_count > 0 then
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'الــســورس ♻️', callback_data ='/bnbak'}, {text = 'اوامـر الـمـوسـيـقـي 🎵', callback_data ='/a7asezr'},
-},
-{
-{text = 'حــول ⚡️', callback_data ='/myabuot'}
-},
-{
-{text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
-},
-}
-local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(CmdStart).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-LuaTele.sendText(Sudo_Id,0,'*\n دخل شخص إلى البوت \n-- TeAm REbOrTeR --\n اسمه :- '..baniusername..' \n ايديه :-  : '..msg.sender.user_id..'\n - معرفة '..banusername..' \n*',"md")
-else
-local reply_markup = LuaTele.replyMarkup{
-type = 'inline',
-data = {
-{text = 'الـمـطـوريــن 🧑‍💻', callback_data ='/lovesou'}, {text = 'الــقــنــوات 🌐', callback_data ='/chSource'},
-},
-{
-{text = 'الـبـوتـات 🤖', callback_data ='/mybot'}
-},
-{
-{text = 'حــول ⚡️', callback_data ='/myabuot'}
-},
-{
-{text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
-},
-}
-return LuaTele.sendText(msg_chat_id,msg_id,Redis:get(HaWkS.."Start:Bot"),"md",false, false, false, false, reply_markup)
-end
-end
-else
-local reply_markup = merolua.replyMarkup{
-type = 'inline',
-data = {
+local CmdStart = '*\n✧︙أهلآ بك في بوت '..(Redis:get(hawks.."HaWkS:Name:Bot") or "هاكس")..
+'\n✧︙اختصاص البوت حماية المجموعات'..
+'\n✧︙لتفعيل البوت عليك اتباع مايلي ...'..
+'\n✧︙اضف البوت الى مجموعتك'..
+'\n✧︙ارفعه ادمن {مشرف}'..
+'\n✧︙ارسل كلمة { تفعيل } ليتم تفعيل المجموعه'..
+'\n✧︙مطور البوت ← {@'..UserSudo..'}*'
+keyboardd = {} 
+keyboardd.inline_keyboard = {
 {
 {text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
 },
@@ -19218,6 +19168,44 @@ data = {
 {text = '- قناة السورس .', url = 't.me/VVQYY'}, 
 },
 }
+local msg_id = msg.id/2097152/0.5 
+return https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id='..msg.chat_id..'&caption='..URL.escape(CmdStart)..'&photo='..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id..'&reply_to_message_id='..msg_id..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboardd))
+else
+local CmdStart = '*\n✧︙أهلآ بك في بوت '..(Redis:get(hawks.."HaWkS:Name:Bot") or "هاكس")..
+'\n✧︙اختصاص البوت حماية المجموعات'..
+'\n✧︙لتفعيل البوت عليك اتباع مايلي ...'..
+'\n✧︙اضف البوت الى مجموعتك'..
+'\n✧︙ارفعه ادمن {مشرف}'..
+'\n✧︙ارسل كلمة { تفعيل } ليتم تفعيل المجموعه'..
+'\n✧︙مطور البوت ← {@'..UserSudo..'}*'
+local reply_markup = merolua.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = 'الــســورس ♻️', callback_data ='/bnbak'}, {text = 'اوامـر الـمـوسـيـقـي 🎵', callback_data ='/a7asezr'},
+},
+{
+{text = 'حــول ⚡️', callback_data ='/myabuot'}
+},
+{
+{text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
+},
+}
+return merolua.sendText(msg_chat_id,msg_id,CmdStart,"md",false, false, false, false, reply_markup)
+end
+else
+local reply_markup = merolua.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = 'الــســورس ♻️', callback_data ='/bnbak'}, {text = 'اوامـر الـمـوسـيـقـي 🎵', callback_data ='/a7asezr'},
+},
+{
+{text = 'حــول ⚡️', callback_data ='/myabuot'}
+},
+{
+{text = 'اضف البوت لمجموعتك ✅', url = 't.me/'..UserBot..'?startgroup=new'}, 
+},
 }
 return merolua.sendText(msg_chat_id,msg_id,Redis:get(hawks.."HaWkS:Start:Bot"),"md",false, false, false, false, reply_markup)
 end
@@ -22006,6 +21994,38 @@ y = y + 1
 end
 end
 end
+if not data.ControllerBot then
+local UserInfo = merolua.getUser(IdUser)
+for Name_User in string.gmatch(UserInfo.first_name, "[^%s]+" ) do
+UserInfo.first_name = Name_User
+break
+end
+local reply_markup = merolua.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}, 
+},
+{
+{text = '- مغادرة المجموعه ', data = '/leftgroup@'..ChatId}, 
+},
+}
+}
+merolua.sendText(Sudo_Id,0,'*\n✧︙تم تفعيل مجموعه جديده \n✧︙من قام بتفعيلها : {*['..UserInfo.first_name..'](tg://user?id='..IdUser..')*} \n✧︙معلومات المجموعه :\n✧︙عدد الاعضاء : '..Info_Chats.member_count..'\n✧︙عدد الادمنيه : '..Info_Chats.administrator_count..'\n✧︙عدد المطرودين : '..Info_Chats.banned_count..'\n✧︙عدد المقيدين : '..Info_Chats.restricted_count..'*\n✧︙عدد المقيدين : '..Info_Chats.restricted_count..'*\n✧︙اسم المجموعه : *['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')\n*✧︙ايدي المجموعه*`'..ChatId..'`\n*✧︙الوقت : '..os.date('%I:%M%p')..'*\n*✧︙التاريخ ↫ '..os.date('%Y/%m/%d')..'*',"md",true, false, false, false, reply_markup)
+end
+local txxt = "اهلا بك عزيزي تم تفعيل المجموعة بنجاح"
+
+keyboard = {} 
+keyboard.inline_keyboard = {
+	{{text="✧ غادر ✧",callback_data="/LeaveBotPic:"..IdUser},{text="✧ تعطيل ✧",callback_data= IdUser..'/offlinebotPic'..ChatId}},
+  {{text = 'سـۅࢪس هـاެكس',url="t.me/VVQYY"}},
+}
+local mm = Msg_id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token..'/EditMessagecaption?chat_id='..ChatId..'&message_id='..mm..'&caption=' .. URL.escape(txxt).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+end
+----        -----
+
 if Text == '/bnbak' then
 local photo = LuaTele.getUserProfilePhotos(HaWkS)
 local ph = photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id
@@ -22140,37 +22160,8 @@ keyboard.inline_keyboard = {
 local ban = Msg_id/2097152/0.5
 https.request("http://api.telegram.org/bot"..Token.."/editmessagemedia?chat_id="..ChatId.."&message_id="..ban.."&media="..JSON.encode(pph).."&reply_markup="..JSON.encode(keyboard))
 end
-if not data.ControllerBot then
-local UserInfo = merolua.getUser(IdUser)
-for Name_User in string.gmatch(UserInfo.first_name, "[^%s]+" ) do
-UserInfo.first_name = Name_User
-break
-end
-local reply_markup = merolua.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}, 
-},
-{
-{text = '- مغادرة المجموعه ', data = '/leftgroup@'..ChatId}, 
-},
-}
-}
-merolua.sendText(Sudo_Id,0,'*\n✧︙تم تفعيل مجموعه جديده \n✧︙من قام بتفعيلها : {*['..UserInfo.first_name..'](tg://user?id='..IdUser..')*} \n✧︙معلومات المجموعه :\n✧︙عدد الاعضاء : '..Info_Chats.member_count..'\n✧︙عدد الادمنيه : '..Info_Chats.administrator_count..'\n✧︙عدد المطرودين : '..Info_Chats.banned_count..'\n✧︙عدد المقيدين : '..Info_Chats.restricted_count..'*\n✧︙عدد المقيدين : '..Info_Chats.restricted_count..'*\n✧︙اسم المجموعه : *['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')\n*✧︙ايدي المجموعه*`'..ChatId..'`\n*✧︙الوقت : '..os.date('%I:%M%p')..'*\n*✧︙التاريخ ↫ '..os.date('%Y/%m/%d')..'*',"md",true, false, false, false, reply_markup)
-end
-local txxt = "اهلا بك عزيزي تم تفعيل المجموعة بنجاح"
 
-keyboard = {} 
-keyboard.inline_keyboard = {
-	{{text="✧ غادر ✧",callback_data="/LeaveBotPic:"..IdUser},{text="✧ تعطيل ✧",callback_data= IdUser..'/offlinebotPic'..ChatId}},
-  {{text = 'سـۅࢪس هـاެكس',url="t.me/VVQYY"}},
-}
-local mm = Msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/EditMessagecaption?chat_id='..ChatId..'&message_id='..mm..'&caption=' .. URL.escape(txxt).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-end
-----        -----
+---------  ------------
 if Text and Text:match('(%d+)/offlinebotPic(.*)') then
 local UserId = {Text:match('(%d+)/offlinebotPic(.*)')}
 if tonumber(IdUser) == tonumber(UserId[1]) then
